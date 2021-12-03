@@ -31,13 +31,13 @@ pipeline {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql \
-    && apk add postgresql-dev \
-    && pip install psycopg2 \
-    && apk add jpeg-dev zlib-dev libjpeg \
-    && pip install Pillow \
-    && apk del build-deps && pyinstaller -F ROI_Frames_Selector.py && pyinstaller -F para_recog.py && pyinstaller -F TabulExecution.py && pip install --upgrade pip && pip install numpy && pip install scikit-image && pip install opencv-python && pip install tk && pip install --upgrade Pillow && pip install pytesseract && pip install itertools && pip install imutils && pip install matplotlib'"
+              && apk add --virtual build-deps gcc python3-dev musl-dev \
+              && apk add postgresql \
+              && apk add postgresql-dev \
+              && pip install psycopg2 \
+              && apk add jpeg-dev zlib-dev libjpeg \
+              && pip install Pillow \
+              && apk del build-deps && pyinstaller -F ROI_Frames_Selector.py && pyinstaller -F para_recog.py && pyinstaller -F TabulExecution.py && pip install --upgrade pip && pip install numpy && pip install scikit-image && pip install opencv-python && pip install tk && pip install --upgrade Pillow && pip install pytesseract && pip install itertools && pip install imutils && pip install matplotlib'"
         }
 
       }
