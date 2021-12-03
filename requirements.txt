@@ -1,0 +1,9 @@
+numpy
+skimage
+tkinter
+opencv-python
+pillow
+pytesseract
+itertools
+matplotlib
+imutils
