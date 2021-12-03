@@ -20,7 +20,13 @@ pipeline {
         VOLUME = '$(pwd)/sources:/src'
         IMAGE = 'cdrx/pyinstaller-linux:python3'
       }
+      post {
+        success {
+          archiveArtifacts "${env.BUILD_ID}/sources/dist/ROI_Frames_Selector"
+          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+        }
 
+      }
       steps {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
@@ -28,13 +34,6 @@ pipeline {
         }
 
       }
-      post {
-        success {
-          archiveArtifacts "${env.BUILD_ID}/sources/dist/ROI_Frames_Selector"
-          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-        }
-
-      }      
     }
 
   }
