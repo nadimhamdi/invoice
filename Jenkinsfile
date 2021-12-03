@@ -14,18 +14,6 @@ pipeline {
       }
     }
 
-    stage('test') {
-      agent {
-        docker {
-          image 'python:3.6.8-alpine'
-        }
-
-      }
-      steps {
-        sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
-      }
-    }
-
     stage('Deliver') {
       agent any
       environment {
@@ -38,6 +26,9 @@ pipeline {
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
         }
 
+      }
+      steps {
+        sh 'pip install -r requirements.txt'
       }
       steps {
         dir(path: env.BUILD_ID) {
