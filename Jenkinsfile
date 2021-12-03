@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -m py_compile source/para_recog.py source/ROI_Frames_Selector.py source/TabulExecution.py source/TabulExecution.pyc'
+        sh 'python -m py_compile source/para_recog.py source/ROI_Frames_Selector.py source/TabulExecution.py'
         stash(name: 'compiled-results', includes: 'source/*.py*')
       }
     }
