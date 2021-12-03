@@ -22,7 +22,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -m virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
+        sh 'python -m virtualenv venv && . venv/bin/activate && pip3 install -r requirements.txt'
       }
     }
 
