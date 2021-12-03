@@ -27,9 +27,7 @@ pipeline {
         }
 
       }
-      steps {
-        sh 'pip install -r requirements.txt'
-        }
+
       steps {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
