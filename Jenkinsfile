@@ -31,7 +31,7 @@ pipeline {
       steps {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
-          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ROI_Frames_Selector.py'"
+          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ROI_Frames_Selector.py && pyinstaller -F para_recog.py&& pyinstaller -F TabulExecution.py && pip3 install requirements.txt'"
         }
 
       }
