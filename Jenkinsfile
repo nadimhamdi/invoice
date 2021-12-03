@@ -17,12 +17,12 @@ pipeline {
     stage('Deliver') {
       agent any
       environment {
-        VOLUME = '$(pwd)/source:/src'
+        VOLUME = '$(pwd)/sources:/src'
         IMAGE = 'cdrx/pyinstaller-linux:python3'
       }
       post {
         success {
-          archiveArtifacts "${env.BUILD_ID}/source/dist/ROI_Frames_Selector"
+          archiveArtifacts "${env.BUILD_ID}/sources/dist/ROI_Frames_Selector"
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
         }
 
