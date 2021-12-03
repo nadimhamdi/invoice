@@ -13,7 +13,6 @@ pipeline {
         stash(name: 'compiled-results', includes: 'sources/*.py*')
       }
     }
-
     stage('Deliver') {
       agent any
       environment {
