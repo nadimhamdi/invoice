@@ -1,6 +1,6 @@
 numpy
 scikit-image
-tkinter
+tk
 opencv-python
 pillow
 pytesseract
