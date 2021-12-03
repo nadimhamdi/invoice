@@ -9,8 +9,8 @@ pipeline {
 
       }
       steps {
-        sh 'python -m py_compile sources/para_recog.py sources/ROI_Frames_Selector.py sources/TabulExecution.py sources/TabulExecution.pyc'
-        stash(name: 'compiled-results', includes: 'sources/*.py*')
+        sh 'python -m py_compile source/para_recog.py source/ROI_Frames_Selector.py source/TabulExecution.py source/TabulExecution.pyc'
+        stash(name: 'compiled-results', includes: 'source/*.py*')
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
       }
       post {
         success {
-          archiveArtifacts "${env.BUILD_ID}/sources/dist/ROI_Frames_Selector"
+          archiveArtifacts "${env.BUILD_ID}/source/dist/ROI_Frames_Selector"
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
         }
 
