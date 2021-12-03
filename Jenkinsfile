@@ -22,12 +22,12 @@ pipeline {
     stage('test') {
       agent {
         docker {
-          image 'qnib/pytest'
+          image 'python:3.6.8-alpine'
         }
 
       }
       steps {
-        sh 'python -m virtualenv venv && . venv/bin/activate && pip3 install -r requirements.txt'
+        sh 'python -m virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
       }
     }
 
