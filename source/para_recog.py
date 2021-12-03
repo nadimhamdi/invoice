@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from pytesseract import image_to_string 
 import os
 import cv2
