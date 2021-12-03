@@ -13,6 +13,7 @@ pipeline {
         stash(name: 'compiled-results', includes: 'sources/*.py*')
       }
     }
+  
     stage('Deliver') {
       agent any
       environment {
@@ -28,7 +29,7 @@ pipeline {
       }
       steps {
         sh 'pip install -r requirements.txt'
-      }
+        }
       steps {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
