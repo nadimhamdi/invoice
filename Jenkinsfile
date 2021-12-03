@@ -14,20 +14,23 @@ pipeline {
       }
     }
 
-        stage('Deliver') {
-            agent {
-                docker {
-                    image 'cdrx/pyinstaller-linux:python3'
-                }
-            }
-            steps {
-                sh 'pyinstaller --onefile source/ROI_Frames_Selector.py'
-            }
-            post {
-                success {
-                    archiveArtifacts 'dist/ROI_Frames_Selector'
-                }
-            }
+    stage('Deliver') {
+      agent {
+        docker {
+          image 'cdrx/pyinstaller-linux:python3'
         }
+
+      }
+      post {
+        success {
+          archiveArtifacts 'dist/ROI_Frames_Selector'
+        }
+
+      }
+      steps {
+        sh 'pyinstaller --onefile source/ROI_Frames_Selector.py'
+      }
     }
+
+  }
 }
