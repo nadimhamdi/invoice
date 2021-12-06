@@ -17,9 +17,13 @@ pipeline {
     stage('Deliver') {
       agent any
       environment {
-        VOLUME = '$(pwd)/sources:/src'
-        IMAGE = 'cdrx/pyinstaller-linux:python3'
-      }
+                CONDA_DLL_SEARCH_MODIFICATION_ENABLE=1
+            }
+            steps {
+                bat 'conda activate venv'
+                bat '/home/nadim/anaconda3/envs/venv/lib/python3.6/PyInstaller --onefile gh-debug.spec'
+                //bat 'c:\\Users\\Ross\\anaconda3\\envs\\test\\python -c "import mkl"'
+            }
       post {
         success {
           archiveArtifacts "${env.BUILD_ID}/sources/dist/ROI_Frames_Selector"
