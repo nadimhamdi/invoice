@@ -30,7 +30,7 @@ pipeline {
       steps {
         dir(path: env.BUILD_ID) {
           unstash 'compiled-results'
-          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ROI_Frames_Selector.py && pyinstaller -F para_recog.py && pyinstaller -F TabulExecution.py && pip install --upgrade pip && pip install Pillow==5.4.1 && pip install numpy && pip install opencv-python && pip install tk && pip install pytesseract && pip install itertools && pip install imutils && pip install matplotlib'"
+          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F ROI_Frames_Selector.py && pyinstaller -F para_recog.py && pyinstaller -F TabulExecution.py'"
         }
 
       }
